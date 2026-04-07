@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  background: rgb(41,41,48);
+  font-family: Arial;
+}
+
+#fieldContainer {
+  position: relative;
+  width: 800px;
+  margin: auto;
+}
+
+#map {
+  width: 100%;
+}
+
+#robot, #target {
+  position: absolute;
+  width: 50px;
+  transform: translate(-50%, -50%);
+}
+
+#phases {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.phaseBox {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background: grey;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

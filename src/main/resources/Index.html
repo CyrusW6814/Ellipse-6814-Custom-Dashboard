@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ellashboard 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Connection -->
+  <div id="connect">
+    <button onclick="connectRobot()">Connect to Robot</button>
+    <button onclick="connectSim()">Connect to Simulation</button>
+    <span id="status">Not connected</span>
+  </div>
+
+  <!-- Field -->
+  <div id="fieldContainer">
+    <img id="map" src="field.png">
+    <img id="robot" src="robot.png">
+    <img id="target" src="target.png">
+  </div>
+
+  <!-- Phase Boxes -->
+  <div id="phases"></div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
