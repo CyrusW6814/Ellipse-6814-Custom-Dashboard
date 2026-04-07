@@ -28,11 +28,9 @@ public class Program extends Application {
 
         engine.load(getClass().getResource("/index.html").toExternalForm());
 
-        // wait for page load before interacting with JS
         engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
 
-                // expose Java → JS
                 JSObject window = (JSObject) engine.executeScript("window");
                 window.setMember("java", this);
 
@@ -52,7 +50,6 @@ public class Program extends Application {
         startLoop();
     }
 
-    // 🔁 main update loop
     private void startLoop() {
         AnimationTimer timer = new AnimationTimer() {
             private long last = 0;
@@ -73,7 +70,6 @@ public class Program extends Application {
         timer.start();
     }
 
-    // 🔗 JS → Java
     public void connectRobot() {
         NTManager.connectNT(true);
     }
@@ -82,14 +78,12 @@ public class Program extends Application {
         NTManager.connectNT(false);
     }
 
-    // 🔗 Java → JS
     private void onConnectionUpdate(NetworkTableEvent e) {
         boolean connected = e.getInstance().isConnected();
 
         engine.executeScript("updateConnection(" + connected + ")");
     }
 
-    // 🔥 CONSTANTS → JSON
     public String getConstantsJSON() {
         return "{"
             + "\"teamNumber\":" + Constants.teamNumber + ","
@@ -107,7 +101,6 @@ public class Program extends Application {
             + "}";
     }
 
-    // helper for arrays
     private String arrayToJSON(int[] arr) {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < arr.length; i++) {

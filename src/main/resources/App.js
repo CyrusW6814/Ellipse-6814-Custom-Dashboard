@@ -1,9 +1,7 @@
 const phases = [];
 const phasesContainer = document.getElementById("phases");
 
-// wait until constants are loaded
 function init() {
-  // create phase boxes using Java constants
   for (let i = 0; i < CONSTANTS.mainPhaseTimes.length; i++) {
     let box = document.createElement("div");
     box.className = "phaseBox";
@@ -16,7 +14,7 @@ function init() {
 window.addEventListener("load", init);
 
 // =========================
-// 🎯 TARGET DRAGGING
+// TARGET DRAGGING
 // =========================
 const target = document.getElementById("target");
 
@@ -39,7 +37,7 @@ document.addEventListener("mousemove", e => {
 document.addEventListener("mouseup", () => dragging = false);
 
 // =========================
-// 🤖 ROBOT UPDATE (FROM JAVA)
+// ROBOT UPDATE (FROM JAVA)
 // =========================
 function updateRobot(x, y) {
   const robot = document.getElementById("robot");
@@ -49,7 +47,7 @@ function updateRobot(x, y) {
 }
 
 // =========================
-// 🔌 CONNECTION STATUS
+// CONNECTION STATUS
 // =========================
 function updateConnection(connected) {
   const status = document.getElementById("status");
@@ -58,7 +56,7 @@ function updateConnection(connected) {
 }
 
 // =========================
-// 🔗 BUTTONS (JS → JAVA)
+// BUTTONS (JS → JAVA)
 // =========================
 function connectRobot() {
   window.java.connectRobot();
