@@ -11,7 +11,16 @@ function init() {
   }
 }
 
-window.addEventListener("load", init);
+function waitForConstants() {
+  if (!window.CONSTANTS) {
+    setTimeout(waitForConstants, 50);
+    return;
+  }
+
+  init(); // now it's safe
+}
+
+waitForConstants();
 
 // =========================
 // TARGET DRAGGING
@@ -53,6 +62,23 @@ function updateConnection(connected) {
   const status = document.getElementById("status");
 
   status.innerText = connected ? "Connected" : "Disconnected";
+}
+
+// =========================
+// PHASE COLOR
+// =========================
+
+function updatePhases(isRed) {
+  let mount = 0;
+  for(let i = 0; i < phases.length; i++){
+    if (i >= 2 && i <= 5) {
+      if (isRed) {
+        phases[i].style.background = (i % 2 === 0) ? "red" : "blue";
+      } else {
+        phases[i].style.background = (i % 2 === 0) ? "blue" : "red";
+      }
+    }
+  }
 }
 
 // =========================

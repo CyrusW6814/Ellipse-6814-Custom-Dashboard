@@ -41,12 +41,24 @@ public class Program extends Application {
         });
 
         stage.setScene(new Scene(view, Constants.windowWidth, Constants.windowHeight));
-        stage.setTitle("Ellashboard 2026");
+        stage.setTitle("Template");
         stage.show();
 
         NTManager.addConnectionListener(this::onConnectionUpdate);
 
-        startLoop();
+        engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+            if (newState == Worker.State.SUCCEEDED) {
+
+                JSObject window = (JSObject) engine.executeScript("window");
+                window.setMember("java", this);
+
+                engine.executeScript(
+                    "window.CONSTANTS = JSON.parse(window.java.getConstantsJSON());"
+                );
+
+                startLoop();
+            }
+        });
     }
 
     private void startLoop() {
@@ -57,6 +69,9 @@ public class Program extends Application {
             public void handle(long now) {
                 if (now - last < 20000000) return;
                 last = now;
+                boolean isRed = NTManager.getAutoWinner() == NTManager.Alliance.RED;
+
+                engine.executeScript("updatePhases(" + isRed + ")");
 
                 Pose2d pose = NTManager.getRobotPose();
 
@@ -72,6 +87,7 @@ public class Program extends Application {
     public void connectRobot() {
         NTManager.connectNT(true);
     }
+    
 
     public void connectSim() {
         NTManager.connectNT(false);

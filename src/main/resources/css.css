@@ -38,7 +38,7 @@ body {
   height: 60px;
   border-radius: 5px;
   background: grey;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 24px;
   display: flex;
   justify-content: center;
