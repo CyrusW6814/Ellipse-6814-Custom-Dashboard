@@ -32,8 +32,8 @@ let offsetX, offsetY;
 
 target.addEventListener("mousedown", e => {
   dragging = true;
-  offsetX = e.offsetX;
-  offsetY = e.offsetY;
+  offsetX = e.offsetX+30;
+  offsetY = e.offsetY+5;
 });
 
 document.addEventListener("mousemove", e => {
