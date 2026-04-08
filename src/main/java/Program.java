@@ -34,7 +34,6 @@ public class Program extends Application {
                 JSObject window = (JSObject) engine.executeScript("window");
                 window.setMember("java", this);
 
-                // send constants to JS
                 engine.executeScript(
                     "window.CONSTANTS = JSON.parse(window.java.getConstantsJSON());"
                 );
@@ -56,7 +55,7 @@ public class Program extends Application {
 
             @Override
             public void handle(long now) {
-                if (now - last < 20_000_000) return;
+                if (now - last < 20000000) return;
                 last = now;
 
                 Pose2d pose = NTManager.getRobotPose();

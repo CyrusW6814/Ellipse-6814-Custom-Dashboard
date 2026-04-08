@@ -47,18 +47,15 @@ dependencies {
     implementation "org.ejml:ejml-simple:${wpi.versions.ejmlVersion.get()}"
     implementation "us.hebi.quickbuf:quickbuf-runtime:${wpi.versions.quickbufVersion.get()}"
 
-    // 🔥 Force JavaFX modules (fixes WebView runtime issues)
     implementation "org.openjfx:javafx-controls:21.0.6"
     implementation "org.openjfx:javafx-web:21.0.6"
 }
 
-// ❌ REMOVE shadow + distribution conflicts entirely
 
 tasks.named("distTar").configure { enabled = false }
 tasks.named("distZip").configure { enabled = false }
 tasks.named("startScripts").configure { enabled = false }
 
-// ✅ run config (WPILib natives + JavaFX)
 tasks.named("run", JavaExec) {
     doFirst {
         def nativeDir = file("$buildDir/NativeMain/RuntimeLibs/windows/x86-64/shared")

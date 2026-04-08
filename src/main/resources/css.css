@@ -14,9 +14,15 @@ body {
   width: 100%;
 }
 
-#robot, #target {
+#robot {
   position: absolute;
-  width: 50px;
+  width: 35px;
+  transform: translate(-50%, -50%);
+}
+
+#target {
+  position: absolute;
+  width: 35px;
   transform: translate(-50%, -50%);
 }
 
