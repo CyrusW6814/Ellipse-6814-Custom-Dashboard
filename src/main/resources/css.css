@@ -46,3 +46,22 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#nextPhase {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.nextPhaseBox {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background: grey;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}

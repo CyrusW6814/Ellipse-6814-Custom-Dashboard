@@ -20,7 +20,6 @@ public class Program extends Application {
         NTManager.init();
         launch(args);
     }
-
     @Override
     public void start(Stage stage) {
         WebView view = new WebView();
@@ -79,6 +78,13 @@ public class Program extends Application {
                 double y = pose.getY() / Constants.fieldWidth;
 
                 engine.executeScript("updateRobot(" + x + "," + y + ")");
+
+                int matchTime = (int) NTManager.getCurrentMatchTime();
+                boolean isAuto = NTManager.isAutonomous();
+
+                engine.executeScript(
+                    "updateTimers(" + matchTime + "," + isAuto + ")"
+                );
             }
         };
         timer.start();
@@ -92,12 +98,20 @@ public class Program extends Application {
     public void connectSim() {
         NTManager.connectNT(false);
     }
-
+    /**
+     * @param onConnectionUpdate
+     * 
+     */
     private void onConnectionUpdate(NetworkTableEvent e) {
         boolean connected = e.getInstance().isConnected();
 
         engine.executeScript("updateConnection(" + connected + ")");
     }
+
+    /**
+     * @param getConstantsJSon
+     * @return Returns a string version of the Constants from the Constants.java file for JavaScript
+     */
 
     public String getConstantsJSON() {
         return "{"
@@ -112,17 +126,35 @@ public class Program extends Application {
             + "\"phaseWidths\":" + Constants.phaseWidths + ","
             + "\"phaseHeights\":" + Constants.phaseHeights + ","
             + "\"mainPhaseTimes\":" + arrayToJSON(Constants.mainPhaseTimes) + ","
-            + "\"phaseTimeRemaining\":" + arrayToJSON(Constants.phaseTimeRemaining)
+            + "\"phaseTimeRemaining\":" + arrayToJSON(Constants.phaseTimeRemaining) + ","
+            + "\"startCopyPhase\":" + Constants.startCopyPhase + ","
+            + "\"endCopyPhase\":" + Constants.endCopyPhase
             + "}";
     }
 
-    private String arrayToJSON(int[] arr) {
+    /**
+     * 
+     * @param phasetimeremaining
+     * @return Returns the array from Java as a String for JavaScript
+     */
+
+    private String arrayToJSON(int[] phasetimeremaining) {
         StringBuilder sb = new StringBuilder("[");
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
-            if (i < arr.length - 1) sb.append(",");
+        for (int i = 0; i < phasetimeremaining.length; i++) {
+            sb.append(phasetimeremaining[i]);
+            if (i < phasetimeremaining.length - 1) sb.append(",");
         }
         sb.append("]");
         return sb.toString();
     }
+    // private String 2DArrayToJSON(int[] phasetimeremaining) {
+    //     StringBuilder sb = new StringBuilder("[");
+    //     for (int i = 0; i < phasetimeremaining.length; i++) {
+    //         for(int j = 0; j < mainP)
+    //         sb.append(phasetimeremaining[i]);
+    //         if (i < phasetimeremaining.length - 1) sb.append(",");
+    //     }
+    //     sb.append("]");
+    //     return sb.toString();
+    // }
 }

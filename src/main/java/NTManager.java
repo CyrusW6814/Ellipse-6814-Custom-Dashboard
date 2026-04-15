@@ -13,7 +13,8 @@ import edu.wpi.first.networktables.StringSubscriber;
 import edu.wpi.first.networktables.StructSubscriber;
 import edu.wpi.first.util.CombinedRuntimeLoader;
 import edu.wpi.first.util.WPIUtilJNI;
-import edu.wpi.first.util.struct.Struct;
+
+// Most of (only) this file was coded by Andrew Lang, the rest (of the files) was by Cyrus Wells
 
 public class NTManager {
     private static NetworkTableInstance nt;
