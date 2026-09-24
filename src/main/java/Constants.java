@@ -2,6 +2,12 @@ import java.util.HashMap;
 
 import edu.wpi.first.math.util.Units;
 
+/* List of Literally anything that this could need to know/display
+
+
+
+ */
+
 public class Constants {
     public static int teamNumber = 6814;
     public static int windowWidth = 900;

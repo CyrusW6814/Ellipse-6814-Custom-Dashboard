@@ -14,7 +14,9 @@ import edu.wpi.first.networktables.StructSubscriber;
 import edu.wpi.first.util.CombinedRuntimeLoader;
 import edu.wpi.first.util.WPIUtilJNI;
 
-// Most of (only) this file was coded by Andrew Lang, the rest (of the files) was by Cyrus Wells
+// Most of (only) this file was coded by Andrew Lang, the rest (of the files) was by Cyrus 
+
+// This file will be edited almost every year because WPIlib versions
 
 public class NTManager {
     private static NetworkTableInstance nt;
@@ -95,7 +97,7 @@ public class NTManager {
 
     public static void publishTarget(double x, double y)
     {
-        // the vscode autofill wrote this and its scarily exactly what i wanted
+        // the vscode autofill wrote this and its scarily exactly what i wanted -Andrew
         if(targetXPub != null && targetYPub != null)
         {
             targetXPub.set(x);
@@ -154,7 +156,7 @@ public class NTManager {
         if(autoWinnerSub != null)
         {
             String winner = autoWinnerSub.get();
-            // it says there is an error, ignore dont give a shit
+            // it says there is an error, ignore dont give a shit, update: not anymore
             if(winner.charAt(0) == 'R')
             {
                 return Alliance.RED;

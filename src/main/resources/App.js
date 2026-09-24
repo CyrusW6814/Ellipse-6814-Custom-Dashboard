@@ -4,7 +4,6 @@ let nextPhase;
 const nextPhaseContainer = document.getElementById("nextPhase");
 
 function init() {
-  //how to do this without the list? I jsut want a seperate element box with updatable text
   let nextPhasebox = document.createElement("div");
   nextPhasebox.className = "nextPhaseBox";
   nextPhasebox.innerText = CONSTANTS.mainPhaseTimes[6];
