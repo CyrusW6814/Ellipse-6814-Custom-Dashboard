@@ -8,7 +8,6 @@ function init() {
   nextPhasebox.className = "nextPhaseBox";
   nextPhasebox.innerText = CONSTANTS.mainPhaseTimes[6];
   nextPhaseContainer.appendChild(nextPhasebox);
-  // nextPhase[0].style.background = "grey;"
   for (let i = 0; i < CONSTANTS.mainPhaseTimes.length; i++) {
     let box = document.createElement("div");
     box.className = "phaseBox";

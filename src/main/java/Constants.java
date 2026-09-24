@@ -1,11 +1,20 @@
-import java.util.HashMap;
-
 import edu.wpi.first.math.util.Units;
 
-/* List of Literally anything that this could need to know/display
-
-
-
+/* List of almost literally anything that this could need to know/display
+- Team Number
+- Field Dimensions as pixels scaling with resolution
+- Window size (Field Dimensions + 50% of each side so 1.5 x field height up and same down and left and right)
+- Phase timers
+- Total time
+- Status of subsystems and (really small) status of connection to them
+    - Status of autoalign
+    - Status of intake(s)
+    - Status of elevator
+    - Status of shooter
+    - Status of outtake
+- Battery status
+- Position
+- Indicator when next phase start (flashing light)
  */
 
 public class Constants {
@@ -27,16 +36,8 @@ public class Constants {
     public static final int phaseWidths = 90;
     public static final int phaseHeights = 60;
     public static final int[] mainPhaseTimes = {20, 10, 25, 25, 25, 25, 30};
-    // public static final int[][] mainPhaseTimes = {{20, 1}, {10, 1}, {25, 4}, {30, 1}};
     public static int[] phaseTimeRemaining = {20, 140, 130, 105, 80, 55, 30};
     // These are indexes aka phase number - 1
     public static final int startCopyPhase = 2;
     public static final int endCopyPhase = 5;
-    // public static final int[] phaseTimeRemaining = new int[mainPhaseTimes.length];
-    // phaseTimeRemaining[0] = 0;
-    // int sum = 0;
-    // for(int i = 1; i < mainPhaseTimes.length; i++){
-    //     sum += mainPhaseTimes[i-1];
-    //     phaseTimeRemaining[i] = totalGameTime-sum;
-    // }
 }
