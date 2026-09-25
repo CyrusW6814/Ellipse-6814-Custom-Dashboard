@@ -51,6 +51,11 @@ dependencies {
     implementation "org.openjfx:javafx-web:21.0.6"
 }
 
+tasks.withType(JavaExec) {
+    systemProperty "java.library.path", file("${projectDir}/lib")
+}
+
+
 
 tasks.named("distTar").configure { enabled = false }
 tasks.named("distZip").configure { enabled = false }
@@ -73,3 +78,4 @@ tasks.named("run", JavaExec) {
 wrapper {
     gradleVersion = "8.11"
 }
+
